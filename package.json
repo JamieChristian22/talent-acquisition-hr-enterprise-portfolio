@@ -1,0 +1,7 @@
+{
+  "name": "talent-hr-secure-a11y-tests",
+  "private": true,
+  "description": "Automated browser accessibility and role-based UI tests for the local synthetic training service",
+  "scripts": {"test:a11y": "playwright test --config=playwright.config.cjs"},
+  "devDependencies": {"@axe-core/playwright": "4.14.0", "@playwright/test": "1.65.0"}
+}

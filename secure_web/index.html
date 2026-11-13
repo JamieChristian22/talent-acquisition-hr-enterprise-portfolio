@@ -1,0 +1,44 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <meta name="theme-color" content="#101e32">
+  <title>Northstar People & Talent | Secure Operations Training</title>
+  <link rel="stylesheet" href="/secure.css">
+  <script src="/secure.js" defer></script>
+</head>
+<body>
+  <a class="skip" href="#main">Skip to main content</a>
+  <header class="sitehead"><div><strong>NORTHSTAR</strong><small>People & Talent / Controlled access training lab</small></div><span class="synthetic">SYNTHETIC DATA ONLY</span></header>
+  <main id="main">
+    <section aria-labelledby="heading"><p class="eyebrow">Enterprise Operations | Local-first</p><h1 id="heading">Secure Talent Operations</h1><p>Real account authentication, enforced permissions and auditable simulated recruiting workflows. Not connected to live applicants.</p></section>
+    <p id="status" role="status" aria-live="polite" class="status">Sign in with an account created by your local administrator.</p>
+    <section id="login-panel" class="panel" aria-labelledby="login-title">
+      <h2 id="login-title">Sign in</h2>
+      <form id="login-form">
+        <label for="username">Username</label><input required id="username" name="username" autocomplete="username" maxlength="40">
+        <label for="password">Password</label><input required id="password" type="password" name="password" autocomplete="current-password" maxlength="1024">
+        <button type="submit">Sign in securely</button>
+      </form>
+      <p class="fineprint">No public self-registration or default credentials. An operator provisions users offline.</p>
+    </section>
+    <section id="workspace-panel" class="panel" aria-labelledby="workspace-title" hidden>
+      <div class="topline"><div><h2 id="workspace-title">Your workspace</h2><p id="identity"></p></div><button id="logout" class="secondary" type="button">Sign out</button></div>
+      <div class="stats" id="stats" aria-live="polite"></div>
+      <section id="reqs" hidden aria-labelledby="reqs-title"><h3 id="reqs-title">Approved and pending requisitions</h3><div class="table-wrap"><table><caption>Simulated job requisitions</caption><thead><tr><th scope="col">ID</th><th scope="col">Title</th><th scope="col">Department</th><th scope="col">Status</th></tr></thead><tbody id="req-rows"></tbody></table></div></section>
+      <section id="request-section" hidden aria-labelledby="request-title"><h3 id="request-title">Submit a requisition</h3>
+        <form id="request-form" class="form-grid">
+          <div><label for="job-title">Job title</label><input id="job-title" maxlength="90" required placeholder="Recruiting Coordinator"></div>
+          <div><label for="department">Department</label><select id="department"><option>People &amp; Culture</option><option>Analytics</option><option>Engineering</option><option>Finance &amp; Operations</option><option>Product</option><option>Customer Success</option></select></div>
+          <div><label for="budget">Annual budget in USD</label><input type="number" id="budget" min="30000" max="500000" value="70000" required></div>
+          <button type="submit">Submit for approval</button>
+        </form></section>
+      <section id="approval-section" hidden aria-labelledby="approval-title"><h3 id="approval-title">Approve a pending requisition</h3><form id="approval-form" class="form-grid"><div><label for="req-id">Requisition ID</label><input required id="req-id" placeholder="REQ-D0005"></div><button type="submit">Approve requisition</button></form><p class="fineprint">You cannot approve a requisition you submitted.</p></section>
+      <section id="analytics-section" hidden aria-labelledby="analytics-title"><h3 id="analytics-title">Recruiting metrics</h3><p>Counts use fictional records only; analysts cannot open individual application details.</p><div id="funnel"></div></section>
+      <section id="audit-section" hidden aria-labelledby="audit-title"><h3 id="audit-title">Access audit trail</h3><div class="table-wrap"><table><caption>Most recent authenticated security events</caption><thead><tr><th scope="col">Event</th><th scope="col">Actor</th><th scope="col">Reference</th></tr></thead><tbody id="audit-rows"></tbody></table></div></section>
+    </section>
+  </main>
+  <footer><p>Portfolio training simulation. Authenticated HTTP service is intended for loopback only; do not deploy to GitHub Pages or accept real HR information.</p></footer>
+</body>
+</html>

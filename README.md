@@ -39,6 +39,31 @@ flowchart LR
 
 ![Offline Talent Acquisition and People Operations Dashboard](assets/dashboard_preview.png)
 
+## Secured operations lab — enterprise v3 (real accounts + permissions + provider HTTP contracts)
+
+The new **local-first secured training service** is a separate, authentically protected application—not a security claim about the public static demo. It features Argon2id local accounts, server-held sessions, HttpOnly/Strict cookies, CSRF protection, five enforced RBAC roles, access audit history, lockouts and separation of requisition approval duties. Passwords and session secrets never ship with this portfolio; users must be provisioned using the offline CLI.
+
+```bash
+python -m venv .venv && source .venv/bin/activate
+pip install -r requirements-secure.txt
+PYTHONPATH=src python -m tahr.admin create training.admin --role admin
+PYTHONPATH=src python -m tahr.secure_service
+# open http://127.0.0.1:8766
+```
+
+**Admin-only integrations probe:** `POST /api/integrations/probe` accepts `{ "provider": "greenhouse" }` or `{ "provider": "workday" }` with a valid admin session and CSRF header. Until an operator configures private provider credentials, it returns 503 without network access. No candidate/worker records are returned.
+
+**Integrations:** Greenhouse Harvest **v3** OAuth client-credentials and same-origin cursor pagination; a tenant-configurable Workday read-only HTTP reader; actual HTTP contract tests against a live local test server. These do **not** claim a live third-party tenant connection. Greenhouse/Workday customer keys have not been provided; no real applicant/employee records are read or sent. The production endpoints require provider authorization before use.
+
+**Validation:** `PYTHONPATH=src python -m unittest discover -s tests -v`. Separate GitHub Actions quality gates run Bandit security scanning, dependency auditing and Playwright + axe-core WCAG 2.2 automated checks on login, authenticated roles and mobile. Review GitHub Actions for live job status; local unit tests do not establish that browser scans have run.
+
+- [Access control, account provisioning and security threat model](docs/security/real_accounts_rbac.md)
+- [Real HTTP integration contract tests and live-provider limitations](docs/security/provider_integration_contracts.md)
+- [Accessibility test scope and manual verification gaps](docs/security/accessibility_verification.md)
+- [Secure app source](src/tahr/secure_service.py) · [Secure UI](secure_web/index.html) · [Role tests](tests/test_secure_service.py) · [Provider HTTP tests](tests/test_provider_contracts.py)
+
+**Never deploy `src/tahr/secure_service.py` as a public employee-data service or embed a password database in GitHub Pages.** It is a localhost-only portfolio demonstration, not a certified production HRIS.
+
 ## Interactive operations lab — enterprise v2
 
 **[Launch the self-contained recruiting workflow](demo/index.html)** to submit and approve requisitions, log applications, advance stages, schedule fictional interviews and replay **mock-only** Greenhouse-shaped / Workday-shaped imports. Includes an action audit log and interactive advanced cohort/forecast *scenarios*. This is a safe browser simulation, not a real ATS. Refresh resets the demo. For a separate local training JSON API: `PYTHONPATH=src python -m tahr.demo_server` (loopback only; no authentication; never deploy publicly).

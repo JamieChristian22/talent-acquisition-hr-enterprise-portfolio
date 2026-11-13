@@ -19,3 +19,18 @@ exports/live/
 *.db-journal
 *.sqlite-journal
 playwright-report/
+
+# Local authenticated API and private key material
+.tahr-local/
+*.sqlite-wal
+*.sqlite-shm
+*.sqlite-journal
+.env
+.env.*
+!.env.example
+secrets/
+.coverage
+htmlcov/
+node_modules/
+playwright-report/
+test-results/

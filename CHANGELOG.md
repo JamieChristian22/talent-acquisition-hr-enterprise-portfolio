@@ -1,3 +1,11 @@
+## v3.0 — Verified local account security and provider contracts (2026-11-13)
+- Added FastAPI authenticated local service, CLI user provisioning and five server-enforced RBAC roles.
+- Added Argon2id, throttled login, opaque token-hashed sessions, CSRF, Origin checks, security headers and access audit.
+- Added read-only Greenhouse Harvest v3 OAuth connector and tenant-specific Workday HTTP reader, with local real HTTP contract tests.
+- Added semantic secure app interface, Playwright/axe-core WCAG checks and GitHub Actions security/dependency gates.
+- Preserved original synthetic public demo; no real employer tenant credentials or actual applicant data used.
+- Remaining: live provider tenant approval, MFA/SSO, public-hosting hardening, manual accessibility, third-party penetration testing.
+
 ## 2.0.0 — 2026-11-13 — Enterprise interactive portfolio lab
 
 - Introduced synthetic in-memory requisition, approvals, application-stage and interview scheduling workflow.

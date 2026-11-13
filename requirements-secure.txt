@@ -1,0 +1,6 @@
+# Additional optional dependencies for the isolated authenticated local training service.
+# Install in a new virtualenv. Update pins after scanning on the target environment.
+fastapi>=0.115,<1
+uvicorn>=0.30,<1
+argon2-cffi>=23.1,<26
+httpx>=0.27,<1
